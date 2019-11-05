@@ -13,10 +13,21 @@ export const initialState = [
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "INCREASE":
-      return { ...state, count: state.count + 1 };
-    case "DECREASE":
-      return { ...state, count: state.count - 1 };
+    
+
+    case "ADD_TODO":
+        const newTodo = {
+          task: action.payload,
+          id: Date.now(),
+          completed: false
+        };
+
+        console.log("reducer newTodo: ", newTodo);
+        return [    // a new array
+          ...state, // explode the old state first
+          newTodo   // then add the new item at the end
+        ];
+
     case "SET_COMPLETED":
       return state.map((item, index) => {
         // Find the item with the matching id

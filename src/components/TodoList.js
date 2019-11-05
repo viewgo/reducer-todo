@@ -6,7 +6,6 @@ const TodoList = props => {
 
     (props.search) ? query = props.search : query = "";
 
-  console.log("listing data: ", props.list)
 
   return (
     <>
@@ -15,8 +14,6 @@ const TodoList = props => {
 
         {props.list.map((element, index) => {
 
-          console.log("list element", element.task);
-            console.log(element.task.toLowerCase())
 
           if (element.task.toLowerCase().includes(query.toLowerCase())) {
             return <Todo key={index} index={index} todoItem={element} checkedHandler={props.checkedHandler} />;
