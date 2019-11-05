@@ -18,18 +18,23 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch({type: "ADD_TODO", payload: task})
+    setTask("");
+  }
+
+  const handleClear = (event) => {
+    event.preventDefault();
+    dispatch({type: "CLEAR"})
   }
 
 
 
   const handleChange = event => {
-    console.log(event.target.name, event.target.value);
     setTask(event.target.value);
   };
 
   return (
     <div className="App">
-      <TodoForm handleChange={handleChange} task={task} handleSubmit={handleSubmit}/>
+      <TodoForm handleChange={handleChange} task={task} handleSubmit={handleSubmit} handleClear={handleClear}/>
       <TodoList  checkedHandler={handleCheck} list={list}/>
     </div>
   );
